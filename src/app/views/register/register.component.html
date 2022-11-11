@@ -1,0 +1,73 @@
+<div class="row mt-5">
+  <h2 class="text-center">{{langObject.register}}</h2>
+</div>
+<div class="d-flex justify-content-center">
+  <div class="row card col-sm-3 mt-3 shadow-sm" style="min-width: 25rem;">
+    <div class="card-body">
+      <div class="form">
+        <form [formGroup]="formRegister">
+          <div class="form-group row mb-2">
+            <label class="col-sm-3 col-form-label" for="name">{{langObject.userName}}:</label>
+            <div class="col-sm-9">
+              <input
+                #name
+                class="form-control"
+                type="text"
+                id="name"
+                formControlName="name"
+                placeholder={{langObject.userName}}
+              />
+              <div *ngIf="stateObject.submitted && !formRegister.get('name')?.valid">
+                <span class="text-danger">{{ errorName }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row mb-2">
+            <label class="col-sm-3 col-form-label" for="familyName">{{langObject.userFamName}}:</label>
+            <div class="col-sm-9">
+              <input
+                class="form-control"
+                type="text"
+                id="familyName"
+                formControlName="familyName"
+                placeholder={{langObject.userFamName}}
+              />
+              <div *ngIf="stateObject.submitted && !formRegister.get('familyName')?.valid">
+                <span class="text-danger">{{ errorFamilyName }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="email">{{langObject.userEmail}}:</label>
+            <div class="col-sm-9">
+              <input
+                class="form-control"
+                type="text"
+                id="email"
+                formControlName="email"
+                placeholder={{langObject.userEmail}}
+              />
+              <div *ngIf="stateObject.submitted && !formRegister.get('email')?.valid">
+                <span class="text-danger">{{ errorEmail }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="float-end mt-2 col-sm-8">
+            <div class="row">
+              <button (click)="addUser()" class="btn btn-success btn-block col-sm-7">{{langObject.saveBtn}}</button>
+              <a class="btn btn-primary mx-2 col-sm-4" routerLink="/home">{{langObject.backBtn}}</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-sm-11 mx-2">
+      <div *ngIf="transactionOk" class="alert alert-success">
+        <strong>{{langObject.registerSucced}}</strong>
+      </div>
+      <div *ngIf="stateObject.submitted && !transactionOk" class="alert alert-danger">
+        <strong>{{langObject.errorUndefined}}</strong>
+      </div>
+    </div>
+  </div>
+</div>

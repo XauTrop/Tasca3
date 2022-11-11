@@ -1,0 +1,24 @@
+<div class="row mt-5">
+  <h2 class="text-center">{{langObject.home}}</h2>
+</div>
+<div class="row">
+  <h3 class="text-dark mx-3 "><p><u>{{langObject.users}}: </u></p></h3>
+</div>
+
+<div class="p-3 col-sm-5 mx-5 bg-info text-white" *ngIf="!users.length">{{langObject.noUsers}}</div>
+
+<div class="card-group row row-cols-1 row-cols-md-4" style="justify-content: space-around;">
+  <div class="col" *ngFor="let user of users" style="min-width: 25rem;">
+    <div class="card mb-4" >
+      <div class="card-body">
+        <h5 class="card-title">{{langObject.userName}}: {{ user.name }}</h5>
+        <h6 class="card-text">{{langObject.userFamName}}: {{ user.familyName }}</h6>
+        <p class="card-text">{{langObject.userEmail}}: {{ user.email }}</p>
+        <div class="d-flex justify-content-between">
+          <a class="btn btn-primary col-sm-4" routerLink="/update/{{ user.id }}">{{langObject.editBtn}}</a>
+          <button type="button" class="btn btn-danger btn-block mx-2 col-sm-3" (click)="deleteUser(user.id)">{{langObject.delBtn}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

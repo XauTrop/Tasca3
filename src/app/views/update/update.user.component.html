@@ -1,0 +1,51 @@
+<div class="row mt-5">
+    <h2 class="text-center">{{langObject.modUser}}</h2>
+</div>
+<div class="d-flex justify-content-center">
+    <div class="row card col-sm-3 mt-3 shadow-sm" style="min-width: 25rem;">
+        <div class="card-body">
+            <div class="form">
+                <form [formGroup]="formRegister">
+                    <div class="form-group row mb-2">
+                        <label class="col-sm-3 col-form-label" for="name">{{langObject.userName}}:</label>
+                        <div class="col-sm-9">
+                            <input #name class="form-control" type="text" id="name" formControlName="name"
+                                [(ngModel)]="user.name" placeholder="Nom">
+                            <div *ngIf="stateObject.submitted && !formRegister.get('name')?.valid">
+                                <span class="text-danger">{{ errorName }}</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label class="col-sm-3 col-form-label" for="familyName">{{langObject.userFamName}}:</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" id="familyName" formControlName="familyName"
+                                [(ngModel)]="user.familyName" placeholder="Cognoms">
+                            <div *ngIf="stateObject.submitted && !formRegister.get('familyName')?.valid">
+                                <span class="text-danger">{{ errorFamilyName }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="email">{{langObject.userEmail}}:</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" id="email" formControlName="email"
+                                [(ngModel)]="user.email" placeholder="email">
+                            <div *ngIf="stateObject.submitted && !formRegister.get('email')?.valid">
+                                <span class="text-danger">{{ errorEmail }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="float-end mt-2 col-sm-8">
+                        <div class="row">
+                            <button (click)="updateUser()" class="btn btn-success btn-block col-sm-7">{{langObject.saveBtn}}</button>
+                            <button type="button" class="btn btn-primary btn-block mx-2 col-sm-4" (click)="goBack()">{{langObject.backBtn}}</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
